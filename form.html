@@ -167,15 +167,15 @@
    	<div class="three fields form1" style="display: none">
     	<div class="field">
       		<label><a style="cursor: pointer" class="specification" name="item1">設定</a>物性規格</label>
-      		<textarea readonly=""></textarea>
+      		<textarea class='spec1' readonly=""></textarea>
     	</div>
     	<div class="field">
       		<label><a style="cursor: pointer" class="specification" name="item2">設定</a>加工條件</label>
-      		<textarea readonly=""></textarea>
+      		<textarea class='spec2' readonly=""></textarea>
     	</div>
     	<div class="field">
       		<label><a style="cursor: pointer" class="specification" name="item3">設定</a>特殊限定</label>
-      		<textarea readonly=""></textarea>
+      		<textarea class='spec3' readonly=""></textarea>
     	</div>
   	</div>
 
@@ -212,7 +212,7 @@
         					<input type="text" name="set-data" placeholder="Number">
       					</td>
       					<td>
-        					<div class="ui checkbox">
+        					<div class="ui child checkbox">
 								<input type="checkbox" name="check">
 								<label>無</label>
        	    	    		</div>
@@ -222,11 +222,11 @@
 			</table>
     	</div>
     	<div class="actions">
-      		<div class="ui button">Cancel</div>
-      		<div class="ui green button">Save</div>
+      		<div class="ui deny button">Cancel</div>
+      		<div class="ui approve green button">Save</div>
     	</div>
   	</div>
-
+ 	
   	<div class="three fields">
     	<div class="twelve wide field">
       		<label>文件進度</label>
@@ -569,23 +569,29 @@ function show_modal(modalform){
 		  }
 	  }
     });
-
+	
     $('.specification').on('click', function(){
       let spec = ($(this).attr("name"));
-	  let findclass = $("input[name='category'").val();
+	  let findclass = $("input[name='category']").val();
 	  let findap = ap.find(item => item.name === findclass)
-		if (findclass !== ""){
-	  if (spec === 'item1'){
-		$('#modalForm').html(show_modal(findap.item1));
+	  if (findclass !== ""){
+		  if (spec === 'item1'){
+			  $('#modalForm').html(show_modal(findap.item1));
+		  }
+		  else if (spec === 'item2'){
+			  $('#modalForm').html(show_modal(findap.item2));
+		  }
+		  else if (spec === 'item3'){
+			  $('#modalForm').html(show_modal(findap.item3));
+		  }
+		  $('.ui.long.modal').modal({
+			  onApprove: function() {
+				  let keyinValue = $('#letitwork').val();
+				  alert(keyinValue)
+				  $('.spec1').html($(''))
+			  }
+		  }).modal('setting', 'transition', 'horizontal flip').modal('show')
 	  }
-	  else if (spec === 'item2'){
-		$('#modalForm').html(show_modal(findap.item2));
-	  }
-	  else if (spec === 'item3'){
-		$('#modalForm').html(show_modal(findap.item3));
-	  }
-		$('.long.modal').modal('setting', 'transition', 'horizontal flip').modal('show');
-		}
 		else {
 			$.uiAlert({
 				textHead: 'Error message', // header
@@ -600,7 +606,12 @@ function show_modal(modalform){
 	});
 
   $('.ui.checkbox').checkbox({
-	  
+	  onChecked: function(){
+	  alert('onCheck')
+  },
+	  onUnchecked: function(){
+		  alert('unChecked')
+	  }
   });
 
 </script>
