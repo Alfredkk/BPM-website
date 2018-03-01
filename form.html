@@ -190,7 +190,7 @@
  			物性規格
  		</div>
  		<div class="scrolling content">
- 			<table class="ui celled padded table center aligned">
+ 			<table class="ui celled padded table center aligned"  id="modaltable">
  				<thead>
  			  		<tr class="ui header">
  			  			<th>規格</th>
@@ -229,7 +229,7 @@
  	
   	<div class="three fields">
     	<div class="twelve wide field">
-      		<label>文件進度</label>
+      		<label id='letitwork'>文件進度</label>
       		<input placeholder="Last Name" type="text">
     	</div>
     	<div class="field">
@@ -504,6 +504,10 @@ let ap = [
 	}
 	]
 
+let property = []
+let process = []
+let special = []
+
 let uploadfile_A =[
 	{"name":"A檔案"},
 	{"name":"B檔案"},
@@ -523,7 +527,7 @@ function show_file(upload_file) {
 function show_modal(modalform){
 	let result = '';
 	modalform.forEach(function(element){
-		let firstcolumn = '<tr><td><h3> '+ element + '</h3></td><td class="single line"><div class="ui input"><input type="text" name="set-data" placeholder="Number"></td><td><div class="ui child checkbox"> <input type="checkbox" name="check"> <label>無</label> </div></td></tr>';
+		let firstcolumn = '<tr><td><h3> '+ element + '</h3></td><td class="single line"><div class="ui input"><input type="text" name="tabledata" placeholder="Number"></td><td><div class="ui child checkbox"> <input type="checkbox" name="check"> <label>無</label> </div></td></tr>';
 		result += firstcolumn;
 	});
 	return result;
@@ -577,20 +581,50 @@ function show_modal(modalform){
 	  if (findclass !== ""){
 		  if (spec === 'item1'){
 			  $('#modalForm').html(show_modal(findap.item1));
+			  $('.ui.long.modal').modal({
+			  onApprove: function() {
+				  let oTable = document.getElementById('modaltable');
+				  let rowLength = oTable.rows.length;
+				 for (i=1 ; i < rowLength; i++){
+					 let oCells0 = oTable.rows.item(i).cells[0].children[0].innerHTML
+					 let oCells1 = oTable.rows.item(i).cells[1].children[0].children[0].value;
+			
+					 property = property + oCells0 + ':' + oCells1+', '
+				 }
+				  $('.spec1').text(result)
+			  }
+			  }).modal('setting', 'transition', 'horizontal flip').modal('show')
 		  }
 		  else if (spec === 'item2'){
-			  $('#modalForm').html(show_modal(findap.item2));
+			  $('#modalForm').html(show_modal(findap.item2));$('.ui.long.modal').modal({
+			  onApprove: function() {			
+				  let oTable = document.getElementById('modaltable');
+				  let rowLength = oTable.rows.length;
+				 for (i=1 ; i < rowLength; i++){
+					 let oCells0 = oTable.rows.item(i).cells[0].children[0].innerHTML
+					 let oCells1 = oTable.rows.item(i).cells[1].children[0].children[0].value;
+					 
+					 process = process + oCells0 + ':' + oCells1+', '
+				 }
+				  $('.spec2').text(result)
+			  }
+			  }).modal('setting', 'transition', 'horizontal flip').modal('show')
 		  }
 		  else if (spec === 'item3'){
-			  $('#modalForm').html(show_modal(findap.item3));
-		  }
-		  $('.ui.long.modal').modal({
+			  $('#modalForm').html(show_modal(findap.item3));$('.ui.long.modal').modal({
 			  onApprove: function() {
-				  let keyinValue = $('#letitwork').val();
-				  alert(keyinValue)
-				  $('.spec1').html($(''))
+				  let oTable = document.getElementById('modaltable');
+				  let rowLength = oTable.rows.length;
+				 for (i=1 ; i < rowLength; i++){
+					 let oCells0 = oTable.rows.item(i).cells[0].children[0].innerHTML
+					 let oCells1 = oTable.rows.item(i).cells[1].children[0].children[0].value;
+					 
+					 special = special + oCells0 + ':' + oCells1+', '
+				 }
+				  $('.spec3').text(result)
 			  }
-		  }).modal('setting', 'transition', 'horizontal flip').modal('show')
+			  }).modal('setting', 'transition', 'horizontal flip').modal('show')
+		  }		  
 	  }
 		else {
 			$.uiAlert({
@@ -612,7 +646,7 @@ function show_modal(modalform){
 	  onUnchecked: function(){
 		  alert('unChecked')
 	  }
-  });
+  });	
 
 </script>
 
