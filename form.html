@@ -583,21 +583,23 @@ function show_modal(modalform){
 			  $('#modalForm').html(show_modal(findap.item1));
 			  $('.ui.long.modal').modal({
 			  onApprove: function() {
+				  property = []
 				  let oTable = document.getElementById('modaltable');
 				  let rowLength = oTable.rows.length;
 				 for (i=1 ; i < rowLength; i++){
 					 let oCells0 = oTable.rows.item(i).cells[0].children[0].innerHTML
 					 let oCells1 = oTable.rows.item(i).cells[1].children[0].children[0].value;
-			
+					 
 					 property = property + oCells0 + ':' + oCells1+', '
 				 }
-				  $('.spec1').text(result)
+				  $('.spec1').text(property)
 			  }
 			  }).modal('setting', 'transition', 'horizontal flip').modal('show')
 		  }
 		  else if (spec === 'item2'){
 			  $('#modalForm').html(show_modal(findap.item2));$('.ui.long.modal').modal({
-			  onApprove: function() {			
+			  onApprove: function() {
+				  process =[]
 				  let oTable = document.getElementById('modaltable');
 				  let rowLength = oTable.rows.length;
 				 for (i=1 ; i < rowLength; i++){
@@ -606,13 +608,14 @@ function show_modal(modalform){
 					 
 					 process = process + oCells0 + ':' + oCells1+', '
 				 }
-				  $('.spec2').text(result)
+				  $('.spec2').text(process)
 			  }
 			  }).modal('setting', 'transition', 'horizontal flip').modal('show')
 		  }
 		  else if (spec === 'item3'){
 			  $('#modalForm').html(show_modal(findap.item3));$('.ui.long.modal').modal({
 			  onApprove: function() {
+				  special = []
 				  let oTable = document.getElementById('modaltable');
 				  let rowLength = oTable.rows.length;
 				 for (i=1 ; i < rowLength; i++){
@@ -621,7 +624,7 @@ function show_modal(modalform){
 					 
 					 special = special + oCells0 + ':' + oCells1+', '
 				 }
-				  $('.spec3').text(result)
+				  $('.spec3').text(special)
 			  }
 			  }).modal('setting', 'transition', 'horizontal flip').modal('show')
 		  }		  
@@ -646,7 +649,13 @@ function show_modal(modalform){
 	  onUnchecked: function(){
 		  alert('unChecked')
 	  }
-  });	
+  });
+	
+	$('#letitwork').on('click', function(){
+		alert(process);
+		alert(property);
+		alert(special);
+	})
 
 </script>
 
