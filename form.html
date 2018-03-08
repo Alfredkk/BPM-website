@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <!-- Site Properties -->
+  <title>展宇科技-研發委託單</title>
+
+  <link rel="stylesheet" type="text/css" href="Semantic-UI/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="Semantic-UI/Semantic-UI-Alert.css">
+  <script src="JQuery/jquery-3.3.1.min.js"></script>
+  <script src="Semantic-UI/semantic.min.js"></script>
+  <script type="text/javascript" src="Semantic-UI/Semantic-UI-Alert.js"></script>
+
+
+<style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style>
+
+</head>
+<body>
+
+<div class="ui inverted menu">
+    <div class="ui container">
+    </div>
+  </div>
+
+
+<div class="ui center aligned text container">
+	<div class="ui bold huge header">研發委託單</div>
+	<div class="row"></div>
+</div>
+
+<div class="ui container">
+	<div class="ui blue four column item pointing menu">
+    	<a class="title item" data-tab="fillout">研發委託單</a>
+    	<a class="title item" data-tab="file">附件下載</a>
+    	<a class="title item" data-tab="flow">表單流程</a>
+    	<a class="title item" data-tab="desc">操作說明</a>
+	</div>
+</div>
+
+<p>&nbsp;</p>
+
+<div class="ui grid container">
+<div class="doubling stackable two cloumn row">
+<div class="ten wide column">
+
+<div class="ui attached message center aligned segment">
+<div class="ui bottom attached tab active" data-tab="fillout">
+	<div class="header">
+    	研發委託單{{formname}}
+  	</div>
+</div>
+<div class="ui bottom attached tab" data-tab="file">
+	<div class="header">
+    	檔案區
+  	</div>
+</div>
+<div class="ui bottom attached tab" data-tab="flow">
+	<div class="header">
+    	表單流程
+  	</div>
+</div>
+<div class="ui bottom attached tab" data-tab="desc">
+	<div class="header">
+    	填寫說明
+  	</div>
+</div>
+</div>
+
+<div class="ui bottom attached tab active" data-tab="fillout">
+
+<form class="ui <!--loading--> form attached fluid segment">
+	<div class="three fields">
+    	<div class="ten wide field">
+      		<label>委託單號</label>
+      		<input placeholder="Read Only" readonly="" type="text">
+    	</div>
+    	<div class="ten wide field">
+      		<label>委託案名稱</label>
+      		<input placeholder="Read Only" type="text">
+    	</div>
+    	<div class="field">
+     		<label>申請日期</label>
+      		<input placeholder="Read Only" readonly="" type="date">
+    	</div>
+	</div>
+   	<div class="three fields">
+
+    	<div class="field">
+      		<label>申請人</label>
+			<input placeholder="Read Only" readonly="" type="text">
+    	</div>
+    	<div class="field">
+
+      		<label>委託案目的</label>
+      		<div class="ui selection dropdown">
+      			<input type="hidden" name="gender">
+      			<i class="dropdown icon"></i>
+      			<div class="default text">Select</div>
+  				<div class="menu">
+    				<a class="item" data-value='new'>新產品開發</a>
+    				<a class="item" data-value="low">降低成本</a>
+    				<a class="item" data-value="change">特性改良</a>
+    				<a class="item" data-value="test">加工測試</a>
+    				<a class="item" data-value="rework">重工</a>
+    				<a class="item" data-value="ctest">生產條件測試</a>
+    				<a class="item" data-value="ingredient">原料測試代入</a>
+    				<a class="item" data-value="other">其他</a>
+  				</div>
+			</div>
+    	</div>
+    	<div class="field">
+      		<label>文件等級</label>
+      		<div class="ui selection dropdown">
+      			<input type="hidden" name="level">
+      			<i class="dropdown icon"></i>
+      			<div class="default text">Level</div>
+  				<div class="menu">
+    				<div class="item">普通</div>
+    				<div class="item">優先</div>
+    				<div class="item">急件</div>
+  				</div>
+			</div>
+    	</div>
+  	</div>
+
+  	<div class="three fields form1" style="display: none">
+    	<div class="field">
+    		<label>應用類別</label>
+    		<div class="ui selection dropdown" id='category'>
+    			<input type="hidden" name="category" >
+      			<i class="dropdown icon"></i>
+      			<div class="default text">Select</div>
+  				<div class="menu">
+    				<div class="item" data-value="塗料">塗料</div>
+    				<div class="item" data-value="皮革">皮革</div>
+    				<div class="item" data-value="上膠">上膠</div>
+    				<div class="item" data-value="架橋劑">架橋劑</div>
+    				<div class="item" data-value="油墨">油墨</div>
+    				<div class="item" data-value="貼合">貼合</div>
+    				<div class="item" data-value="灌注">灌注</div>
+    				<div class="item" data-value="特化">特化</div>
+    				<div class="item" data-value="轉寫膜">轉寫膜</div>
+    				<div class="item" data-value="離型膜">離型膜</div>
+    				<div class="item" data-value="塗工膜">塗工膜</div>
+  				</div>
+			</div>
+    	</div>
+    </div>
+
+   	<div class="three fields form1" style="display: none">
+    	<div class="field">
+      		<label><a style="cursor: pointer" class="specification" name="item1">設定</a>物性規格</label>
+      		<textarea class='spec1' readonly=""></textarea>
+    	</div>
+    	<div class="field">
+      		<label><a style="cursor: pointer" class="specification" name="item2">設定</a>加工條件</label>
+      		<textarea class='spec2' readonly=""></textarea>
+    	</div>
+    	<div class="field">
+      		<label><a style="cursor: pointer" class="specification" name="item3">設定</a>特殊限定</label>
+      		<textarea class='spec3' readonly=""></textarea>
+    	</div>
+  	</div>
+
+    <div class="field form3" style="display: none">
+    	<label>說明</label>
+		<textarea rows="4"></textarea>
+    </div>
+
+ 	<div class="ui long modal transition">
+		<i class="close icon"></i>
+ 		<div class="ui brown header">
+ 			物性規格
+ 		</div>
+ 		<div class="scrolling content">
+ 			<table class="ui celled padded table center aligned"  id="modaltable">
+ 				<thead>
+ 			  		<tr class="ui header">
+ 			  			<th>規格</th>
+ 			  			<th>=>值</th>
+ 			  			<th>
+ 			  				<div class="ui master checkbox">
+								<input type="checkbox" name="check">
+								<label>全選無</label>
+       	    	    		</div>
+    					</th>
+    				</tr>
+    			</thead>
+  				<tbody class="list" id="modalForm">
+    				<tr>
+      					<td>
+        					<h3>A</h3>
+      					</td>
+      					<td class="single line">
+        					<input type="text" name="set-data" placeholder="Number">
+      					</td>
+      					<td>
+        					<div class="ui child checkbox">
+								<input type="checkbox" name="check">
+								<label>無</label>
+       	    	    		</div>
+      					</td>
+    				</tr>
+  				</tbody>
+			</table>
+    	</div>
+    	<div class="actions">
+      		<div class="ui deny button">Cancel</div>
+      		<div class="ui approve green button">Save</div>
+    	</div>
+  	</div>
+ 	
+  	<div class="three fields">
+    	<div class="twelve wide field">
+      		<label id='letitwork'>文件進度</label>
+      		<input placeholder="Last Name" type="text">
+    	</div>
+    	<div class="field">
+      		<label>委託廠別</label>
+      		<div class="ui selection dropdown">
+      			<input type="hidden" name="gender">
+      			<i class="dropdown icon"></i>
+      			<div class="default text">Gender</div>
+  				<div class="menu">
+    				<div class="item" data-value="1">Male</div>
+    				<div class="item" data-value="0">Female</div>
+  				</div>
+			</div>
+    	</div>
+    	<div class="field">
+      		<label>委託部門</label>
+      		<div class="ui selection dropdown">
+      			<input type="hidden" name="gender">
+      			<i class="dropdown icon"></i>
+      			<div class="default text">Gender</div>
+  				<div class="menu">
+    				<div class="item" data-value="1">Male</div>
+    				<div class="item" data-value="0">Female</div>
+  				</div>
+			</div>
+    	</div>
+  	</div>
+  	<div class="three fields">
+    	<div class="twelve wide field">
+      		<label>廠商名稱</label>
+      		<input placeholder="Last Name" type="text">
+    	</div>
+    	<div class="field">
+      		<label>廠商編號</label>
+      		<input placeholder="Last Name" type="text">
+    	</div>
+    	<div class="field">
+      		<label>樣品提供</label>
+      		<input placeholder="Last Name" type="text">
+    	</div>
+  	</div>
+  	<div class="three fields">
+    	<div class="twelve wide field">
+      		<label>希望完成日</label>
+      		<input placeholder="Last Name" type="date">
+    	</div>
+    	<div class="field">
+      		<label>申請人</label>
+      		<input placeholder="Last Name" type="text">
+    	</div>
+    	<div class="field">
+      		<label>none</label>
+      		<input placeholder="Last Name" type="text">
+    	</div>
+  	</div>
+  	<div class="inline field">
+    	<div class="ui checkbox">
+      		<input type="checkbox" id="terms">
+      		<label for="terms">I agree to the terms and conditions</label>
+    	</div>
+  	</div>
+  	<div class="ui blue submit button">Submit</div>
+</form>
+
+</div>
+
+<div class="ui bottom attached tab" data-tab="file">
+	<p>&nbsp;</p>
+
+	<div class="ui internally celled grid">
+    	<div class="row">
+        	<div class="column">
+          		<table class="ui stackable center aligned table">
+  					<thead>
+					</thead>
+  					<tbody id="uploadfile">
+    					<tr>
+      						<td>
+      							<a href="#">A檔</a>
+      						</td>
+    					</tr>
+    					<tr>
+      						<td>
+      							<a href="#">B檔</a>
+							</td>
+    					</tr>
+    				</tbody>
+				</table>
+          	</div>
+        </div>
+	</div>
+</div>
+
+<div class="ui bottom attached tab" data-tab="flow">
+
+<div class="ui container">
+
+</div>
+
+</div>
+
+<div class="ui bottom attached tab" data-tab="desc">
+
+	<div class="ui text cotainer">
+  		<div class="ui attached segment">
+    		Segment
+  		</div>
+  		<div class="ui section divider"></div>
+  		<h4 class="ui top attached block header center aligned">
+    		檔案上傳
+  		</h4>
+  		<div class="ui attached segment">
+    		填選表單時於選擇上傳檔案(可同時複選多個檔案)，執行後請至附件下載瀏覽，非流程內的人員無法讀取
+  		</div>
+  		<div class="ui section divider"></div>
+  		<h4 class="ui top attached block header center aligned">
+    		附件檔案
+  		</h4>
+  		<div class="ui attached segment">
+    		Segment
+		</div>
+	</div>
+
+</div>
+
+</div>
+
+	<div class="five wide cloumn">
+		<div class="ui segment">
+			<div class="ui comments">
+  				<h3 class="ui dividing center aligned header">討論區</h3>
+  				<div class="comment">
+    				<a class="avatar">
+      					<img src="/images/avatar/small/matt.jpg">
+    				</a>
+    				<div class="content">
+      					<a class="author">Matt</a>
+      					<div class="metadata">
+        					<span class="date">Today at 5:42PM</span>
+      					</div>
+    	  				<div class="text">
+	        				How artistic!
+      					</div>
+      					<div class="actions">
+        					<a class="reply">Reply</a>
+      					</div>
+    				</div>
+  				</div>
+  			<div class="comment">
+    				<a class="avatar">
+      					<img src="/images/avatar/small/elliot.jpg">
+    				</a>
+    				<div class="content">
+      					<a class="author">Elliot Fu</a>
+      					<div class="metadata">
+        					<span class="date">Yesterday at 12:30AM</span>
+      					</div>
+      					<div class="text">
+        					<p>This has been very useful for my research. Thanks as well!</p>
+      					</div>
+      					<div class="actions">
+        					<a class="reply">Reply</a>
+      					</div>
+    				</div>
+    					<div class="comments">
+      						<div class="comment">
+        						<a class="avatar">
+      		    					<img src="/images/avatar/small/jenny.jpg">
+     		   				</a>
+        						<div class="content">
+          							<a class="author">Jenny Hess</a>
+          							<div class="metadata">
+     			       					<span class="date">Just now</span>
+	          						</div>
+    	      						<div class="text">
+        	    						Elliot you are always so right :)
+          							</div>
+          							<div class="actions">
+            							<a class="reply">Reply</a>
+          							</div>
+        						</div>
+      						</div>
+    					</div>
+  			</div>
+  				<form class="ui mini reply form">
+   					 <div class="field">
+      					<textarea></textarea>
+    				</div>
+    				<div class="ui blue labeled submit icon button">
+      					<i class="icon edit"></i> Add Reply
+    				</div>
+  				</form>
+			</div>
+ 		</div>
+ 	</div>
+ 	</div>
+</div>
+
+
+<script>
+
+let ap = [
+	{"name":"塗料",
+	"item1":["色度","外觀","固成分(%)","NCO(%)","粘度(cps/25℃)","1:黃變/2:不黃變","其它"],
+    "item2":["乾燥條件","溫度","加工方式","指觸時間","硬化時間","鉛筆硬度","其它"],
+    "item3":["溶劑組成","禁用物質","其它"]
+	},
+	{"name":"皮革",
+    "item1":["色度","外觀","固成分(%)","M1(kg/cm2)","粘度(cps/25℃)","1:面料/2:底料","1:黃變/2:不黃變","其它"],
+    "item2":["耐寒曲折:℃/次","常溫曲折:℃","UV測試:小時,級","耐水解:℃,濕度%,小時","加工材質","剝離強度","其它"],
+    "item3":["溶劑組成","禁用物質","其它"]
+	},
+	{"name":"上膠",
+    "item1":["1:亮面/2:霧面","固成分(%)","粘度(cps/25℃)","M1(kg/cm2)","1:黃變/2:不黃變","1:一液/2:二液","其它"],
+    "item2":["耐曲折:℃,次","加工材質","成品應用","耐水洗:℃,小時,次","其它"],
+    "item3":["溶劑組成","禁用物質","其它"]
+	},
+	{"name":"架橋劑",
+	"item1":["色度","外觀","固成分(%)","NCO(%)","粘度(cps/25℃)","分散性","其它"],
+    "item2":["耐寒曲折:℃,次","常溫曲折:℃,次","耐水解:℃,濕度%,小時","耐熱性:℃/天","剝離強度","M1:kg/cm2","PEAK:kg/cm2","延伸率","其它"],
+    "item3":["溶劑組成","禁用物質","其它"]
+	},
+	{"name":"油墨",
+	"item1":["色度","外觀","固成分(%)","粘度(cps/25℃)","M1(kg/cm2)","PEAK(kg/cm2)","延伸率(%)","1:黃變/2:不黃變","1:一液/2:二液","其它"],
+    "item2":["自然乾燥","℃ time","耐曲折:℃,次","加工材質","噴塗","網印","其它"],
+    "item3":["禁用物質","其它"]
+	},
+	{"name":"貼合",
+	"item1":["色度","外觀","固成分(%)","粘度(cps/25℃)","M1(kg/cm2)","1:黃變/2:不黃變","1:一液/2:二液","其它"],
+    "item2":["加工方式:輕貼(點貼)、重貼","成品應用","貼合材質","其它"],
+    "item3":["禁用物質","其它"]
+	},
+	{"name":"灌注",
+	"item1":["色度","外觀","NCO(%)","粘度(cps/25℃)","1:黃變/2:不黃變","其它"],
+    "item2":["操作時間","硬度:shore","成型條件:time,℃","cream time","發泡高度","tack-free time","rise time","其它"],
+    "item3":["其它"]
+	},
+	{"name":"特化",
+	"item1":["水性PU樹脂","UV樹脂","Silicon樹脂","其它"],
+    "item2":["基材","自然乾燥","硬度","℃ time","塗佈方式","其它"],
+    "item3":["溶劑組成","禁用物質","其它"]
+	},
+	{"name":"轉寫膜",
+	"item1":["全轉/切轉","耐水洗(hr)","耐熱(25℃)","其它"],
+    "item2":["熱壓溫度/時間","客戶底膠","客戶基材","其它"],
+    "item3":["法令/法規","禁/限用物質","其它"]
+	},
+	{"name":"離型膜",
+	"item1":["一般離型力(g/in)","經時離型力(g/in)","客戶基材","其它"],
+    "item2":["其它"],
+    "item3":["法令/法規","禁/限用物質","其它"]
+	},
+	{"name":"塗工膜",
+	"item1":["表面阻抗(次方)","靜電壓(V/cm)","黏力(g/in)","經時黏力(g/in)","表面黏性(tack)","環境耐性","客戶基材","其它"],
+    "item2":["客戶用膠(塗料)","其它"],
+    "item3":["法令/法規","禁/限用物質","其它"]
+	}
+	]
+
+let uploadfile_A =[
+	{"name":"A檔案"},
+	{"name":"B檔案"},
+	{"name":"C檔案"}
+];
+
+function show_file(upload_file) {
+	let result = '';
+	upload_file.forEach(function(element){
+		let onerow =
+			'<tr> <td> <a href="#">'+element.name+'</a> </td> </tr>';
+		result = result+onerow;
+	})
+	return result;
+}
+
+function show_modal(modalform){
+	let result = '';
+	modalform.forEach(function(element){
+		let firstcolumn = '<tr><td><h3> '+ element + '</h3></td><td class="single line"><div class="ui input"><input type="text" name="tabledata" placeholder="Numbe" class="target"></td><td><div class="ui child checkbox"> <input type="checkbox" name="noncheck"> <label>無</label> </div></td></tr>';
+		result += firstcolumn;
+	});
+	return result;
+};
+
+  $(document).ready(function() {
+      // fix main menu to page on passing
+      $('.main.menu').visibility({
+        type: 'fixed'
+      });
+      $('.overlay').visibility({
+        type: 'fixed',
+        offset: 80
+      });
+
+      // lazy load images
+      $('.image').visibility({
+        type: 'image',
+        transition: 'vertical flip in',
+        duration: 500
+      });
+
+      // show dropdown on hover
+      $('.main.menu  .ui.dropdown').dropdown({
+        on: 'hover'
+      });
+	  
+	  $('.menu .item').tab();
+
+    });
+
+  $('#uploadfile').html(show_file(uploadfile_A));
+
+  $('.ui.dropdown').dropdown({
+	  onChange: function(value, text, $selectedItem){
+		  if (value === 'new'||value ==='low'||value ==='change'||value ==='test'||value ==='other'){
+	  		$('.form3').slideUp();
+			$('.form1').slideDown();
+		  }
+		  else if (value === 'rework'||value ==='ctest'||value ==='ingredient') {
+			  $('.form1').slideUp();
+			  $('.form3').slideDown();
+		  }
+	  }
+    });
+	
+    $('.specification').on('click', function(){
+      let spec = ($(this).attr("name"));
+	  let findclass = $("input[name='category']").val();
+	  let findap = ap.find(item => item.name === findclass)
+	  if (findclass !== ""){
+		  if (spec === 'item1'){
+			  $('#modalForm').html(show_modal(findap.item1));
+			  $('.ui.long.modal').modal({
+				  onShow: function() {
+					  $('.ui.master.checkbox').checkbox('uncheck'),
+					  $('.ui.child.checkbox').checkbox({
+						  onChecked: function() {
+							  $(this).parents('tr').find('.input > input').attr('readonly',true).val('none');
+							  $(this).parents('tr').find('.input').removeClass('error');
+						  },
+						  onUnchecked: function() {
+							  $(this).parents('tr').find('.input > input').attr('readonly',false).val('');
+						  }
+					  })
+					  $('.input > input').on('blur', function(){
+						  if ( !$(this).val()){
+							  $(this).parent().addClass('error');
+						  }
+						  else {
+							  $(this).parent().removeClass('error');
+						  }
+					  });
+				  },
+			  onApprove: function() {
+				  let result = []
+				  let oTable = document.getElementById('modaltable');
+				  let rowLength = oTable.rows.length;
+				  let inputValue = $("input[name='tabledata']").val();
+					  for (i=1 ; i < rowLength; i++){
+						  let oCells0 = oTable.rows.item(i).cells[0].children[0].innerHTML
+						  let oCells1 = oTable.rows.item(i).cells[1].children[0].children[0].value;
+						  if ( oCells1 == ''){
+							  i = 50
+							  alert('請輸入空格')
+							  result = []
+						  }
+						  else {
+							  result = result + oCells0 + ':' + oCells1+', '
+						  }
+					  }
+				  $('.spec1').text(result)
+			  }
+			  }).modal('setting', 'transition', 'horizontal flip').modal('show')
+		  }
+		  else if (spec === 'item2'){
+			  $('#modalForm').html(show_modal(findap.item2));$('.ui.long.modal').modal({
+				  onShow: function() {
+					  $('.ui.master.checkbox').checkbox('uncheck'),
+					  $('.ui.child.checkbox').checkbox({
+						  onChecked: function() {
+							  $(this).parents('tr').find('.input > input').attr('readonly',true).val('none');
+							  $(this).parents('tr').find('.input').removeClass('error');
+						  },
+						  onUnchecked: function() {
+							  $(this).parents('tr').find('.input > input').attr('readonly',false).val('');
+						  }
+					  })
+					  $('.input > input').on('blur', function(){
+						  if ( !$(this).val()){
+							  $(this).parent().addClass('error');
+						  }
+						  else {
+							  $(this).parent().removeClass('error');
+						  }
+					  });
+				  },
+			  onApprove: function() {
+				  let result = []
+				  let oTable = document.getElementById('modaltable');
+				  let rowLength = oTable.rows.length;
+				  let inputValue = $("input[name='tabledata']").val();
+					  for (i=1 ; i < rowLength; i++){
+						  let oCells0 = oTable.rows.item(i).cells[0].children[0].innerHTML
+						  let oCells1 = oTable.rows.item(i).cells[1].children[0].children[0].value;
+						  if ( oCells1 == ''){
+							  i = 50
+							  alert('請輸入空格')
+							  result = []
+						  }
+						  else {
+							  result = result + oCells0 + ':' + oCells1+', '
+						  }
+					  }
+				  $('.spec2').text(result)
+			  }
+			  }).modal('setting', 'transition', 'horizontal flip').modal('show')
+		  }
+		  else if (spec === 'item3'){
+			  $('#modalForm').html(show_modal(findap.item3));$('.ui.long.modal').modal({
+				  onShow: function() {
+					  $('.ui.master.checkbox').checkbox('uncheck'),
+					  $('.ui.child.checkbox').checkbox({
+						  onChecked: function() {
+							  $(this).parents('tr').find('.input > input').attr('readonly',true).val('none');
+							  $(this).parents('tr').find('.input').removeClass('error');
+						  },
+						  onUnchecked: function() {
+							  $(this).parents('tr').find('.input > input').attr('readonly',false).val('');
+						  }
+					  })
+					  $('.input > input').on('blur', function(){
+						  if ( !$(this).val()){
+							  $(this).parent().addClass('error');
+						  }
+						  else {
+							  $(this).parent().removeClass('error');
+						  }
+					  });
+				  },
+			  onApprove: function() {
+				  let result = []
+				  let oTable = document.getElementById('modaltable');
+				  let rowLength = oTable.rows.length;
+				  let inputValue = $("input[name='tabledata']").val();
+					  for (i=1 ; i < rowLength; i++){
+						  let oCells0 = oTable.rows.item(i).cells[0].children[0].innerHTML
+						  let oCells1 = oTable.rows.item(i).cells[1].children[0].children[0].value;
+						  if ( oCells1 == ''){
+							  i = 50
+							  alert('請輸入空格')
+							  result = []
+						  }
+						  else {
+							  result = result + oCells0 + ':' + oCells1+', '
+						  }
+					  }
+				  $('.spec3').text(result)
+			  }
+			  }).modal('setting', 'transition', 'horizontal flip').modal('show')
+		  }
+	  }
+		else {
+			$.uiAlert({
+				textHead: 'Error message', // header
+				text: '請選擇應用類別', // Text
+				bgcolor: '#F2711C', // background-color
+				textcolor: '#fff', // color
+				position: 'top-center',// position . top And bottom ||  left / center / right
+				icon: 'warning sign', // icon in semantic-UI
+				time: 3, // time
+			});
+		}
+	});
+
+  $('.ui.checkbox').checkbox({
+	  onChecked: function(){
+  },
+	  onUnchecked: function(){
+	  }
+  });
+	
+  $('.master.checkbox').checkbox({
+	  // check all children
+	  onChecked: function() {
+		  var $childCheckbox  = $(this).parents('table').find('.child')
+		  $childCheckbox.checkbox('check')
+	  },
+	  // uncheck all children
+	  onUnchecked: function() {
+		  var $childCheckbox  = $(this).parents('table').find('.child')
+		  $childCheckbox.checkbox('uncheck');
+	  }
+  });	
+	
+	$('#letitwork').on('click', function(){
+		alert(process);
+		alert(property);
+		alert(special);
+	})
+
+</script>
+
+</body>
+
+</html>
