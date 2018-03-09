@@ -47,7 +47,7 @@
 
 <div class="ui container">
 	<div class="ui blue four column item pointing menu">
-    	<a class="title item" data-tab="fillout">研發委託單</a>
+    	<a class="title active item" data-tab="fillout">研發委託單</a>
     	<a class="title item" data-tab="file">附件下載</a>
     	<a class="title item" data-tab="flow">表單流程</a>
     	<a class="title item" data-tab="desc">操作說明</a>
@@ -63,7 +63,7 @@
 <div class="ui attached message center aligned segment">
 <div class="ui bottom attached tab active" data-tab="fillout">
 	<div class="header">
-    	研發委託單{{formname}}
+    	研發委託單<label>[申請中]</label>
   	</div>
 </div>
 <div class="ui bottom attached tab" data-tab="file">
@@ -228,10 +228,6 @@
   	</div>
  	
   	<div class="three fields">
-    	<div class="twelve wide field">
-      		<label id='letitwork'>文件進度</label>
-      		<input placeholder="Last Name" type="text">
-    	</div>
     	<div class="field">
       		<label>委託廠別</label>
       		<div class="ui selection dropdown">
@@ -239,20 +235,20 @@
       			<i class="dropdown icon"></i>
       			<div class="default text">Gender</div>
   				<div class="menu">
-    				<div class="item" data-value="1">Male</div>
-    				<div class="item" data-value="0">Female</div>
+    				<div class="item" data-value="ADept">樹脂廠</div>
+    				<div class="item" data-value="CDept">膠膜廠</div>
   				</div>
 			</div>
     	</div>
     	<div class="field">
       		<label>委託部門</label>
-      		<div class="ui selection dropdown">
+      		<div class="ui selection dropdown clearRD">
       			<input type="hidden" name="gender">
       			<i class="dropdown icon"></i>
-      			<div class="default text">Gender</div>
+      			<div class="default text">請先選擇廠別</div>
   				<div class="menu">
-    				<div class="item" data-value="1">Male</div>
-    				<div class="item" data-value="0">Female</div>
+    				<div class="item" id="ARD" data-value="ARD" style="display: none">樹脂研發</div>
+    				<div class="item" id="CRD" data-value="CRD" style="display: none">膠膜研發</div>
   				</div>
 			</div>
     	</div>
@@ -531,11 +527,6 @@ function show_modal(modalform){
         duration: 500
       });
 
-      // show dropdown on hover
-      $('.main.menu  .ui.dropdown').dropdown({
-        on: 'hover'
-      });
-	  
 	  $('.menu .item').tab();
 
     });
@@ -552,6 +543,16 @@ function show_modal(modalform){
 			  $('.form1').slideUp();
 			  $('.form3').slideDown();
 		  }
+		  if (value === 'ADept'){
+			  $('.dropdown.clearRD').dropdown('clear')
+			  $("#CRD").hide();
+			  $("#ARD").show();
+		  }
+		  else if (value === 'CDept') {
+			  $('.dropdown.clearRD').dropdown('clear')
+			  $("#ARD").hide();
+			  $("#CRD").show();
+		  }
 	  }
     });
 	
@@ -563,6 +564,7 @@ function show_modal(modalform){
 		  if (spec === 'item1'){
 			  $('#modalForm').html(show_modal(findap.item1));
 			  $('.ui.long.modal').modal({
+				  //開啟modal時，帶入的資料新增限制條件
 				  onShow: function() {
 					  $('.ui.master.checkbox').checkbox('uncheck'),
 					  $('.ui.child.checkbox').checkbox({
@@ -573,7 +575,7 @@ function show_modal(modalform){
 						  onUnchecked: function() {
 							  $(this).parents('tr').find('.input > input').attr('readonly',false).val('');
 						  }
-					  })
+					  })	
 					  $('.input > input').on('blur', function(){
 						  if ( !$(this).val()){
 							  $(this).parent().addClass('error');
@@ -710,7 +712,7 @@ function show_modal(modalform){
 	  onUnchecked: function(){
 	  }
   });
-	
+
   $('.master.checkbox').checkbox({
 	  // check all children
 	  onChecked: function() {
@@ -724,10 +726,8 @@ function show_modal(modalform){
 	  }
   });	
 	
-	$('#letitwork').on('click', function(){
-		alert(process);
-		alert(property);
-		alert(special);
+	$('#letitwork').one('click', function(){
+		alert('案')
 	})
 
 </script>
