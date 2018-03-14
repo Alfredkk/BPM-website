@@ -56,374 +56,362 @@
 
 <p>&nbsp;</p>
 
-<div class="ui grid container">
-<div class="doubling stackable two cloumn row">
-<div class="ten wide column">
 
-<div class="ui attached message center aligned segment">
-<div class="ui bottom attached tab active" data-tab="fillout">
-	<div class="header">
-    	研發委託單<label>[申請中]</label>
-  	</div>
-</div>
-<div class="ui bottom attached tab" data-tab="file">
-	<div class="header">
-    	檔案區
-  	</div>
-</div>
-<div class="ui bottom attached tab" data-tab="flow">
-	<div class="header">
-    	表單流程
-  	</div>
-</div>
-<div class="ui bottom attached tab" data-tab="desc">
-	<div class="header">
-    	填寫說明
-  	</div>
-</div>
-</div>
-
-<div class="ui bottom attached tab active" data-tab="fillout">
-
-<form class="ui <!--loading--> form attached fluid segment">
-	<div class="three fields">
-    	<div class="ten wide field">
-      		<label>委託單號</label>
-      		<input placeholder="Read Only" readonly="" type="text">
-    	</div>
-    	<div class="ten wide field">
-      		<label>委託案名稱</label>
-      		<input placeholder="Read Only" type="text">
-    	</div>
-    	<div class="field">
-     		<label>申請日期</label>
-      		<input placeholder="Read Only" readonly="" type="date">
-    	</div>
-	</div>
-   	<div class="three fields">
-
-    	<div class="field">
-      		<label>申請人</label>
-			<input placeholder="Read Only" readonly="" type="text">
-    	</div>
-    	<div class="field">
-
-      		<label>委託案目的</label>
-      		<div class="ui selection dropdown">
-      			<input type="hidden" name="gender">
-      			<i class="dropdown icon"></i>
-      			<div class="default text">Select</div>
-  				<div class="menu">
-    				<a class="item" data-value='new'>新產品開發</a>
-    				<a class="item" data-value="low">降低成本</a>
-    				<a class="item" data-value="change">特性改良</a>
-    				<a class="item" data-value="test">加工測試</a>
-    				<a class="item" data-value="rework">重工</a>
-    				<a class="item" data-value="ctest">生產條件測試</a>
-    				<a class="item" data-value="ingredient">原料測試代入</a>
-    				<a class="item" data-value="other">其他</a>
-  				</div>
-			</div>
-    	</div>
-    	<div class="field">
-      		<label>文件等級</label>
-      		<div class="ui selection dropdown">
-      			<input type="hidden" name="level">
-      			<i class="dropdown icon"></i>
-      			<div class="default text">Level</div>
-  				<div class="menu">
-    				<div class="item">普通</div>
-    				<div class="item">優先</div>
-    				<div class="item">急件</div>
-  				</div>
-			</div>
-    	</div>
-  	</div>
-
-  	<div class="three fields form1" style="display: none">
-    	<div class="field">
-    		<label>應用類別</label>
-    		<div class="ui selection dropdown" id='category'>
-    			<input type="hidden" name="category" >
-      			<i class="dropdown icon"></i>
-      			<div class="default text">Select</div>
-  				<div class="menu">
-    				<div class="item" data-value="塗料">塗料</div>
-    				<div class="item" data-value="皮革">皮革</div>
-    				<div class="item" data-value="上膠">上膠</div>
-    				<div class="item" data-value="架橋劑">架橋劑</div>
-    				<div class="item" data-value="油墨">油墨</div>
-    				<div class="item" data-value="貼合">貼合</div>
-    				<div class="item" data-value="灌注">灌注</div>
-    				<div class="item" data-value="特化">特化</div>
-    				<div class="item" data-value="轉寫膜">轉寫膜</div>
-    				<div class="item" data-value="離型膜">離型膜</div>
-    				<div class="item" data-value="塗工膜">塗工膜</div>
-  				</div>
-			</div>
-    	</div>
-    </div>
-
-   	<div class="three fields form1" style="display: none">
-    	<div class="field">
-      		<label><a style="cursor: pointer" class="specification" name="item1">設定</a>物性規格</label>
-      		<textarea class='spec1' readonly=""></textarea>
-    	</div>
-    	<div class="field">
-      		<label><a style="cursor: pointer" class="specification" name="item2">設定</a>加工條件</label>
-      		<textarea class='spec2' readonly=""></textarea>
-    	</div>
-    	<div class="field">
-      		<label><a style="cursor: pointer" class="specification" name="item3">設定</a>特殊限定</label>
-      		<textarea class='spec3' readonly=""></textarea>
-    	</div>
-  	</div>
-
-    <div class="field form3" style="display: none">
-    	<label>說明</label>
-		<textarea rows="4"></textarea>
-    </div>
-
- 	<div class="ui long modal transition">
-		<i class="close icon"></i>
- 		<div class="ui brown header">
- 			物性規格
- 		</div>
- 		<div class="scrolling content">
- 			<table class="ui celled padded table center aligned"  id="modaltable">
- 				<thead>
- 			  		<tr class="ui header">
- 			  			<th>規格</th>
- 			  			<th>=>值</th>
- 			  			<th>
- 			  				<div class="ui master checkbox">
-								<input type="checkbox" name="check">
-								<label>全選無</label>
-       	    	    		</div>
-    					</th>
-    				</tr>
-    			</thead>
-  				<tbody class="list" id="modalForm">
-    				<tr>
-      					<td>
-        					<h3>A</h3>
-      					</td>
-      					<td class="single line">
-        					<input type="text" name="set-data" placeholder="Number">
-      					</td>
-      					<td>
-        					<div class="ui child checkbox">
-								<input type="checkbox" name="check">
-								<label>無</label>
-       	    	    		</div>
-      					</td>
-    				</tr>
-  				</tbody>
-			</table>
-    	</div>
-    	<div class="actions">
-      		<div class="ui deny button">Cancel</div>
-      		<div class="ui approve green button">Save</div>
-    	</div>
-  	</div>
- 	
-  	<div class="three fields">
-    	<div class="field">
-      		<label>委託廠別</label>
-      		<div class="ui selection dropdown">
-      			<input type="hidden" name="gender">
-      			<i class="dropdown icon"></i>
-      			<div class="default text">Gender</div>
-  				<div class="menu">
-    				<div class="item" data-value="ADept">樹脂廠</div>
-    				<div class="item" data-value="CDept">膠膜廠</div>
-  				</div>
-			</div>
-    	</div>
-    	<div class="field">
-      		<label>委託部門</label>
-      		<div class="ui selection dropdown clearRD">
-      			<input type="hidden" name="gender">
-      			<i class="dropdown icon"></i>
-      			<div class="default text">請先選擇廠別</div>
-  				<div class="menu">
-    				<div class="item" id="ARD" data-value="ARD" style="display: none">樹脂研發</div>
-    				<div class="item" id="CRD" data-value="CRD" style="display: none">膠膜研發</div>
-  				</div>
-			</div>
-    	</div>
-  	</div>
-  	<div class="three fields">
-    	<div class="twelve wide field">
-      		<label>廠商名稱</label>
-      		<input placeholder="Last Name" type="text">
-    	</div>
-    	<div class="field">
-      		<label>廠商編號</label>
-      		<input placeholder="Last Name" type="text">
-    	</div>
-    	<div class="field">
-      		<label>樣品提供</label>
-      		<input placeholder="Last Name" type="text">
-    	</div>
-  	</div>
-  	<div class="three fields">
-    	<div class="twelve wide field">
-      		<label>希望完成日</label>
-      		<input placeholder="Last Name" type="date">
-    	</div>
-    	<div class="field">
-      		<label>申請人</label>
-      		<input placeholder="Last Name" type="text">
-    	</div>
-    	<div class="field">
-      		<label>none</label>
-      		<input placeholder="Last Name" type="text">
-    	</div>
-  	</div>
-  	<div class="inline field">
-    	<div class="ui checkbox">
-      		<input type="checkbox" id="terms">
-      		<label for="terms">I agree to the terms and conditions</label>
-    	</div>
-  	</div>
-  	<div class="ui blue submit button">Submit</div>
-</form>
-
-</div>
-
-<div class="ui bottom attached tab" data-tab="file">
-	<p>&nbsp;</p>
-
-	<div class="ui internally celled grid">
-    	<div class="row">
-        	<div class="column">
-          		<table class="ui stackable center aligned table">
-  					<thead>
-					</thead>
-  					<tbody id="uploadfile">
-    					<tr>
-      						<td>
-      							<a href="#">A檔</a>
-      						</td>
-    					</tr>
-    					<tr>
-      						<td>
-      							<a href="#">B檔</a>
-							</td>
-    					</tr>
-    				</tbody>
-				</table>
-          	</div>
+<div class="ui two column stackable grid container">
+  <div class="twelve wide column">
+    <div class="ui attached message center aligned segment">
+    <div class="ui bottom attached tab active" data-tab="fillout">
+        <div class="header">
+            研發委託單<label>[申請中]</label>
         </div>
-	</div>
+    </div>
+    <div class="ui bottom attached tab" data-tab="file">
+        <div class="header">
+            檔案區
+        </div>
+    </div>
+    <div class="ui bottom attached tab" data-tab="flow">
+        <div class="header">
+            表單流程
+        </div>
+    </div>
+    <div class="ui bottom attached tab" data-tab="desc">
+        <div class="header">
+            填寫說明
+        </div>
+    </div>
+    </div>
+
+    <div class="ui bottom attached tab active" data-tab="fillout">
+
+    <form class="ui <!--loading--> form attached fluid segment">
+        <div class="three fields">
+            <div class="field">
+                <label>委託單號</label>
+                <input placeholder="Read Only" readonly="" type="text">
+            </div>
+            <div class="field">
+                <label>委託案名稱</label>
+                <input placeholder="請輸入名稱" type="text">
+            </div>
+            <div class="field">
+                <label>申請日期</label>
+                <input placeholder="Read Only" readonly="" type="date">
+            </div>
+        </div>
+        <div class="three fields">
+
+            <div class="field">
+                <label>申請人</label>
+                <input placeholder="Read Only" readonly="" type="text">
+            </div>
+            <div class="field">
+
+                <label>委託案目的</label>
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="gender">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Select</div>
+                    <div class="menu">
+                        <a class="item" data-value='new'>新產品開發</a>
+                        <a class="item" data-value="low">降低成本</a>
+                        <a class="item" data-value="change">特性改良</a>
+                        <a class="item" data-value="test">加工測試</a>
+                        <a class="item" data-value="rework">重工</a>
+                        <a class="item" data-value="ctest">生產條件測試</a>
+                        <a class="item" data-value="ingredient">原料測試代入</a>
+                        <a class="item" data-value="other">其他</a>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label>文件等級</label>
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="level">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Level</div>
+                    <div class="menu">
+                        <div class="item">普通</div>
+                        <div class="item">優先</div>
+                        <div class="item">急件</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="three fields form1" style="display: none">
+            <div class="field">
+                <label>應用類別</label>
+                <div class="ui selection dropdown" id='category'>
+                    <input type="hidden" name="category" >
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Select</div>
+                    <div class="menu">
+                        <div class="item" data-value="塗料">塗料</div>
+                        <div class="item" data-value="皮革">皮革</div>
+                        <div class="item" data-value="上膠">上膠</div>
+                        <div class="item" data-value="架橋劑">架橋劑</div>
+                        <div class="item" data-value="油墨">油墨</div>
+                        <div class="item" data-value="貼合">貼合</div>
+                        <div class="item" data-value="灌注">灌注</div>
+                        <div class="item" data-value="特化">特化</div>
+                        <div class="item" data-value="轉寫膜">轉寫膜</div>
+                        <div class="item" data-value="離型膜">離型膜</div>
+                        <div class="item" data-value="塗工膜">塗工膜</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="three fields form1" style="display: none">
+            <div class="field">
+                <label><a style="cursor: pointer" class="specification" name="item1">設定</a>物性規格</label>
+                <textarea class='spec1' readonly=""></textarea>
+            </div>
+            <div class="field">
+                <label><a style="cursor: pointer" class="specification" name="item2">設定</a>加工條件</label>
+                <textarea class='spec2' readonly=""></textarea>
+            </div>
+            <div class="field">
+                <label><a style="cursor: pointer" class="specification" name="item3">設定</a>特殊限定</label>
+                <textarea class='spec3' readonly=""></textarea>
+            </div>
+        </div>
+
+        <div class="field form3" style="display: none">
+            <label>說明</label>
+            <textarea rows="4"></textarea>
+        </div>
+
+        <div class="ui long modal transition">
+            <i class="close icon"></i>
+            <div class="ui brown header">
+                物性規格
+            </div>
+            <div class="scrolling content">
+                <table class="ui celled padded table center aligned"  id="modaltable">
+                    <thead>
+                        <tr class="ui header">
+                            <th>規格</th>
+                            <th>=>值</th>
+                            <th>
+                                <div class="ui master checkbox">
+                                    <input type="checkbox" name="check">
+                                    <label>全選無</label>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="list" id="modalForm">
+                        <tr>
+                            <td>
+                                <h3>A</h3>
+                            </td>
+                            <td class="single line">
+                                <input type="text" name="set-data" placeholder="Number">
+                            </td>
+                            <td>
+                                <div class="ui child checkbox">
+                                    <input type="checkbox" name="check">
+                                    <label>無</label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="actions">
+                <div class="ui deny button">Cancel</div>
+                <div class="ui approve green button">Save</div>
+            </div>
+        </div>
+
+        <div class="two fields">
+            <div class="field">
+                <label>委託廠別</label>
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="gender">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Department</div>
+                    <div class="menu">
+                        <div class="item" data-value="ADept">樹脂廠</div>
+                        <div class="item" data-value="CDept">膠膜廠</div>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label>委託部門</label>
+                <div class="ui selection dropdown clearRD">
+                    <input type="hidden" name="gender">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">請先選擇廠別</div>
+                    <div class="menu">
+                        <div class="item" id="ARD" data-value="ARD" style="display: none">樹脂研發</div>
+                        <div class="item" id="CRD" data-value="CRD" style="display: none">膠膜研發</div>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label>希望完成日</label>
+                <input placeholder="Last Name" type="date">
+            </div>
+        </div>
+        <div class="four fields">
+            <div class="field">
+                <label>廠商編號</label>
+                <input readonly='' placeholder="Last Name" type="text">
+            </div>
+            <div class="field">
+                <label>廠商名稱</label>
+                <input placeholder="Last Name" type="text">
+            </div>
+            <div class="field sample">
+                <label>樣品數量</label>
+                <input placeholder="無請輸入0" type="number" min="0">
+            </div>
+            <div class="field">
+                <label>單位</label>
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="level">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">請先輸入數量</div>
+                    <div class="menu">
+                        <div class="item sample" style="display: none">kg</div>
+                        <div class="item sample" style="display: none">m</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui blue submit button">Submit</div>
+    </form>
+
+    </div>
+
+    <div class="ui bottom attached tab" data-tab="file">
+        <p>&nbsp;</p>
+
+        <div class="ui internally celled grid">
+            <div class="row">
+                <div class="column">
+                    <table class="ui stackable center aligned table">
+                        <thead>
+                        </thead>
+                        <tbody id="uploadfile">
+                            <tr>
+                                <td>
+                                    <a href="#">A檔</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#">B檔</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui bottom attached tab" data-tab="flow">
+
+    <div class="ui container">
+
+    </div>
+
+    </div>
+
+    <div class="ui bottom attached tab" data-tab="desc">
+
+        <div class="ui text cotainer">
+            <div class="ui attached segment">
+                <h4>申請單填寫說明：</h4>
+                研發委託單旁顯示的為目前案件的進度
+                <ul>
+                <li>由系統自動產生的欄位無法變更僅讀取功能</li>
+                <li>請依照委託原因輸入委託案名稱</li>
+                <li>選擇委託目的→應用類別(需先選擇類別否則會跳出錯誤)→點選設定後請輸入各項明細，若有空白將跳出錯誤請重填</li>
+                </ul>
+            </div>
+            <div class="ui section divider"></div>
+            <h4 class="ui top attached block header center aligned">
+                檔案上傳
+            </h4>
+            <div class="ui attached segment">
+                填選表單時於選擇上傳檔案(可同時複選多個檔案)，執行後請至附件下載瀏覽，非流程內的人員無法讀取
+            </div>
+            <div class="ui section divider"></div>
+            <h4 class="ui top attached block header center aligned">
+                附件檔案
+            </h4>
+            <div class="ui attached segment">
+                Segment
+            </div>
+        </div>
+
+    </div>
+  </div>
+  <div class="four wide column">
+        <div class="ui segment" id="callreply">
+            <div class="ui comments">
+                <h3 class="ui dividing center aligned header">討論區</h3>
+                <div class="comment">
+                    <div class="content">
+                        <a class="author">Matt</a>
+                        <div class="metadata">
+                            <span class="date">Today at 5:42PM</span>
+                        </div>
+                        <div class="text">
+                            How artistic!
+                        </div>
+                        <div class="actions">
+                            <a class="reply">Reply</a>
+                        </div>
+                    </div>
+                </div>
+            <div class="comment">
+                    <div class="content">
+                        <a class="author">Elliot Fu</a>
+                        <div class="metadata">
+                            <span class="date">Yesterday at 12:30AM</span>
+                        </div>
+                        <div class="text">
+                            <p>This has been very useful for my research. Thanks as well!</p>
+                        </div>
+                        <div class="actions">
+                            <a class="reply">Reply</a>
+                        </div>
+                    </div>
+                        <div class="comments">
+                            <div class="comment">
+                                <div class="content">
+                                    <a class="author">Jenny Hess</a>
+                                    <div class="metadata">
+                                        <span class="date">Just now</span>
+                                    </div>
+                                    <div class="text">
+                                        Elliot you are always so right :)
+                                    </div>
+                                    <div class="actions">
+                                        <a class="reply">Reply</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+                <form class="ui mini reply form">
+                     <div class="field">
+                        <textarea></textarea>
+                    </div>
+                    <div class="ui blue labeled submit icon button" id="addreply">
+                        <i class="icon edit"></i> Add Reply
+                    </div>
+                </form>
+            </div>
+    </div>
+  </div>
 </div>
-
-<div class="ui bottom attached tab" data-tab="flow">
-
-<div class="ui container">
-
-</div>
-
-</div>
-
-<div class="ui bottom attached tab" data-tab="desc">
-
-	<div class="ui text cotainer">
-  		<div class="ui attached segment">
-    		Segment
-  		</div>
-  		<div class="ui section divider"></div>
-  		<h4 class="ui top attached block header center aligned">
-    		檔案上傳
-  		</h4>
-  		<div class="ui attached segment">
-    		填選表單時於選擇上傳檔案(可同時複選多個檔案)，執行後請至附件下載瀏覽，非流程內的人員無法讀取
-  		</div>
-  		<div class="ui section divider"></div>
-  		<h4 class="ui top attached block header center aligned">
-    		附件檔案
-  		</h4>
-  		<div class="ui attached segment">
-    		Segment
-		</div>
-	</div>
-
-</div>
-
-</div>
-
-	<div class="five wide cloumn">
-		<div class="ui segment">
-			<div class="ui comments">
-  				<h3 class="ui dividing center aligned header">討論區</h3>
-  				<div class="comment">
-    				<a class="avatar">
-      					<img src="/images/avatar/small/matt.jpg">
-    				</a>
-    				<div class="content">
-      					<a class="author">Matt</a>
-      					<div class="metadata">
-        					<span class="date">Today at 5:42PM</span>
-      					</div>
-    	  				<div class="text">
-	        				How artistic!
-      					</div>
-      					<div class="actions">
-        					<a class="reply">Reply</a>
-      					</div>
-    				</div>
-  				</div>
-  			<div class="comment">
-    				<a class="avatar">
-      					<img src="/images/avatar/small/elliot.jpg">
-    				</a>
-    				<div class="content">
-      					<a class="author">Elliot Fu</a>
-      					<div class="metadata">
-        					<span class="date">Yesterday at 12:30AM</span>
-      					</div>
-      					<div class="text">
-        					<p>This has been very useful for my research. Thanks as well!</p>
-      					</div>
-      					<div class="actions">
-        					<a class="reply">Reply</a>
-      					</div>
-    				</div>
-    					<div class="comments">
-      						<div class="comment">
-        						<a class="avatar">
-      		    					<img src="/images/avatar/small/jenny.jpg">
-     		   				</a>
-        						<div class="content">
-          							<a class="author">Jenny Hess</a>
-          							<div class="metadata">
-     			       					<span class="date">Just now</span>
-	          						</div>
-    	      						<div class="text">
-        	    						Elliot you are always so right :)
-          							</div>
-          							<div class="actions">
-            							<a class="reply">Reply</a>
-          							</div>
-        						</div>
-      						</div>
-    					</div>
-  			</div>
-  				<form class="ui mini reply form">
-   					 <div class="field">
-      					<textarea></textarea>
-    				</div>
-    				<div class="ui blue labeled submit icon button">
-      					<i class="icon edit"></i> Add Reply
-    				</div>
-  				</form>
-			</div>
- 		</div>
- 	</div>
- 	</div>
-</div>
-
 
 <script>
 
@@ -490,6 +478,31 @@ let uploadfile_A =[
 	{"name":"B檔案"},
 	{"name":"C檔案"}
 ];
+    
+let reply_data ={
+    "RDNO":{
+        "ARD20180303": {"name":'Matt', "comments":'Great', "replydate":'2018/03/05'},
+//                        {"name":'Alfred', "comments":'Great', "replydate":'2018/03/05'},
+//                        {"name":'Kite', "comments":'Great', "replydate":'2018/03/05'}
+//                       ],
+        "ARD20180305": {"name":'Lili', "comments":'Great', "replydate":'2018/03/05'}
+    }
+}
+
+function show_reply(){
+    let result = '<div class="ui comments"><h3 class="ui dividing center aligned header">討論區</h3>';
+    for (var make in reply_data.RDNO){
+        let name = reply_data.RDNO[make].name;
+        let comments = reply_data.RDNO[make].comments;
+        let replydate = reply_data.RDNO[make].replydate;
+        let eachcomment = '<div class="comment"><div class="content"><a class="author">' + name + '</a><div class="metadata"><span class="date">' + replydate + '</span></div><div class="text">' + comments + '</div></div></div>'
+        
+        result += eachcomment
+        
+    };
+    result += '<form class="ui mini reply form"><div class="field"><textarea></textarea></div><div class="ui blue labeled submit icon button" id="addreply"><i class="icon edit"></i> Add Reply</div></form></div>'
+    return result;
+};
 
 function show_file(upload_file) {
 	let result = '';
@@ -504,12 +517,12 @@ function show_file(upload_file) {
 function show_modal(modalform){
 	let result = '';
 	modalform.forEach(function(element){
-		let firstcolumn = '<tr><td><h3> '+ element + '</h3></td><td class="single line"><div class="ui input"><input type="text" name="tabledata" placeholder="Numbe" class="target"></td><td><div class="ui child checkbox"> <input type="checkbox" name="noncheck"> <label>無</label> </div></td></tr>';
-		result += firstcolumn;
+		let firstcolumn = '<tr><td><h3> '+ element + '</h3></td><td class="single line"><div class="ui input"><input type="text" name="tabledata" placeholder="請輸入值" class="target"></td><td><div class="ui child checkbox"> <input type="checkbox" name="noncheck"> <label>無</label> </div></td></tr>';
+		result += firstcolumn; 
 	});
 	return result;
 };
-
+    
   $(document).ready(function() {
       // fix main menu to page on passing
       $('.main.menu').visibility({
@@ -519,29 +532,52 @@ function show_modal(modalform){
         type: 'fixed',
         offset: 80
       });
-
-      // lazy load images
-      $('.image').visibility({
-        type: 'image',
-        transition: 'vertical flip in',
-        duration: 500
-      });
-
+      
+      $('#uploadfile').html(show_file(uploadfile_A));
+      
 	  $('.menu .item').tab();
-
+      
+      $('.sample>input').blur(function(){
+          let result = $(this).val()
+          if (result === '0' || result === '') {
+              $('.sample').parents('.dropdown').dropdown('clear')
+              $('.item.sample').hide()
+          }
+          else if (result !== '0' || result !== '') {
+              $('.sample').show()
+          };
+      });
+      
+      $('body').delegate('#addreply','click',function(){
+          let replytext = $(this).siblings().find('textarea').val()
+          let today = new Date()
+          var dd = today.getDate();
+          var mm = today.getMonth()+1; //January is 0!
+          var yyyy = today.getFullYear()
+          today = yyyy + '/' + mm + '/' + dd
+          $(this).parents('form').before('<div class="comment"><div class="content"><a class="author">' + 'King' + '</a><div class="metadata"><span class="date">' + today + '</span></div><div class="text">' + replytext + '</div></div></div>')
+          $(this).siblings().find('textarea').val('')
+//          alert(replytext)
+//          let dataNo = 'ARD20180303'
+//          let finddata = reply_data.find(item => item.RDNO === dataNo)
+//          if (dataNo !== ''){
+//              $('#callreply').html(show_reply());
+//          };
+      });
+      
     });
-
-  $('#uploadfile').html(show_file(uploadfile_A));
 
   $('.ui.dropdown').dropdown({
 	  onChange: function(value, text, $selectedItem){
 		  if (value === 'new'||value ==='low'||value ==='change'||value ==='test'||value ==='other'){
 	  		$('.form3').slideUp();
 			$('.form1').slideDown();
+			$('.form3').children('textarea').val('')
 		  }
 		  else if (value === 'rework'||value ==='ctest'||value ==='ingredient') {
 			  $('.form1').slideUp();
 			  $('.form3').slideDown();
+			  $('#category').dropdown('clear')
 		  }
 		  if (value === 'ADept'){
 			  $('.dropdown.clearRD').dropdown('clear')
@@ -553,9 +589,12 @@ function show_modal(modalform){
 			  $("#ARD").hide();
 			  $("#CRD").show();
 		  }
+		  if (value==='塗料'||value==='皮革'||value==='上膠'||value==='架橋劑'||value==='油墨'||value==='貼合'||value==='灌注'||value==='特化'||value==='轉寫膜'||value==='離型膜'||value==='塗工膜'||$('#category').find('input').val()==='') {
+			  $('.specification').parent().siblings('textarea').empty()
+		  }
 	  }
     });
-	
+		  
     $('.specification').on('click', function(){
       let spec = ($(this).attr("name"));
 	  let findclass = $("input[name='category']").val();
@@ -569,7 +608,7 @@ function show_modal(modalform){
 					  $('.ui.master.checkbox').checkbox('uncheck'),
 					  $('.ui.child.checkbox').checkbox({
 						  onChecked: function() {
-							  $(this).parents('tr').find('.input > input').attr('readonly',true).val('none');
+							  $(this).parents('tr').find('.input > input').attr('readonly',true).val('無');
 							  $(this).parents('tr').find('.input').removeClass('error');
 						  },
 						  onUnchecked: function() {
@@ -599,7 +638,7 @@ function show_modal(modalform){
 							  result = []
 						  }
 						  else {
-							  result = result + oCells0 + ':' + oCells1+', '
+							  result = result + oCells0 + ':' + oCells1+'。 '
 						  }
 					  }
 				  $('.spec1').text(result)
@@ -612,7 +651,7 @@ function show_modal(modalform){
 					  $('.ui.master.checkbox').checkbox('uncheck'),
 					  $('.ui.child.checkbox').checkbox({
 						  onChecked: function() {
-							  $(this).parents('tr').find('.input > input').attr('readonly',true).val('none');
+							  $(this).parents('tr').find('.input > input').attr('readonly',true).val('無');
 							  $(this).parents('tr').find('.input').removeClass('error');
 						  },
 						  onUnchecked: function() {
@@ -655,7 +694,7 @@ function show_modal(modalform){
 					  $('.ui.master.checkbox').checkbox('uncheck'),
 					  $('.ui.child.checkbox').checkbox({
 						  onChecked: function() {
-							  $(this).parents('tr').find('.input > input').attr('readonly',true).val('none');
+							  $(this).parents('tr').find('.input > input').attr('readonly',true).val('無');
 							  $(this).parents('tr').find('.input').removeClass('error');
 						  },
 						  onUnchecked: function() {
@@ -705,14 +744,7 @@ function show_modal(modalform){
 			});
 		}
 	});
-
-  $('.ui.checkbox').checkbox({
-	  onChecked: function(){
-  },
-	  onUnchecked: function(){
-	  }
-  });
-
+	 
   $('.master.checkbox').checkbox({
 	  // check all children
 	  onChecked: function() {
@@ -724,12 +756,8 @@ function show_modal(modalform){
 		  var $childCheckbox  = $(this).parents('table').find('.child')
 		  $childCheckbox.checkbox('uncheck');
 	  }
-  });	
-	
-	$('#letitwork').one('click', function(){
-		alert('案')
-	})
-
+  });
+    
 </script>
 
 </body>
