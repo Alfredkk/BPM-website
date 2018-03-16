@@ -84,32 +84,32 @@
 
     <div class="ui bottom attached tab active" data-tab="fillout">
 
-    <form class="ui <!--loading--> form attached fluid segment">
+    <form class="ui form attached fluid segment">
         <div class="three fields">
             <div class="field">
                 <label>委託單號</label>
-                <input placeholder="Read Only" readonly="" type="text">
+                <input placeholder="Read Only" readonly="" type="text" name="RD_ID">
             </div>
             <div class="field">
                 <label>委託案名稱</label>
-                <input placeholder="請輸入名稱" type="text">
+                <input placeholder="請輸入名稱" type="text" name="RDname">
             </div>
             <div class="field">
                 <label>申請日期</label>
-                <input placeholder="Read Only" readonly="" type="date">
+                <input placeholder="Read Only" readonly="" type="date" name="apply_date">
             </div>
         </div>
         <div class="three fields">
 
             <div class="field">
                 <label>申請人</label>
-                <input placeholder="Read Only" readonly="" type="text">
+                <input placeholder="Read Only" readonly="" type="text" name="apply_by">
             </div>
             <div class="field">
 
                 <label>委託案目的</label>
                 <div class="ui selection dropdown">
-                    <input type="hidden" name="gender">
+                    <input type="hidden" name="purpose">
                     <i class="dropdown icon"></i>
                     <div class="default text">Select</div>
                     <div class="menu">
@@ -166,21 +166,21 @@
         <div class="three fields form1" style="display: none">
             <div class="field">
                 <label><a style="cursor: pointer" class="specification" name="item1">設定</a>物性規格</label>
-                <textarea class='spec1' readonly=""></textarea>
+                <textarea name="spec1" class='spec1' readonly=""></textarea>
             </div>
             <div class="field">
                 <label><a style="cursor: pointer" class="specification" name="item2">設定</a>加工條件</label>
-                <textarea class='spec2' readonly=""></textarea>
+                <textarea name="spec2" class='spec2' readonly=""></textarea>
             </div>
             <div class="field">
                 <label><a style="cursor: pointer" class="specification" name="item3">設定</a>特殊限定</label>
-                <textarea class='spec3' readonly=""></textarea>
+                <textarea name="spec3" class='spec3' readonly=""></textarea>
             </div>
         </div>
 
         <div class="field form3" style="display: none">
             <label>說明</label>
-            <textarea rows="4"></textarea>
+            <textarea name="purpose_desc" rows="4"></textarea>
         </div>
 
         <div class="ui long modal transition">
@@ -203,20 +203,7 @@
                         </tr>
                     </thead>
                     <tbody class="list" id="modalForm">
-                        <tr>
-                            <td>
-                                <h3>A</h3>
-                            </td>
-                            <td class="single line">
-                                <input type="text" name="set-data" placeholder="Number">
-                            </td>
-                            <td>
-                                <div class="ui child checkbox">
-                                    <input type="checkbox" name="check">
-                                    <label>無</label>
-                                </div>
-                            </td>
-                        </tr>
+                        
                     </tbody>
                 </table>
             </div>
@@ -230,7 +217,7 @@
             <div class="field">
                 <label>委託廠別</label>
                 <div class="ui selection dropdown">
-                    <input type="hidden" name="gender">
+                    <input type="hidden" name="Dept">
                     <i class="dropdown icon"></i>
                     <div class="default text">Department</div>
                     <div class="menu">
@@ -242,7 +229,7 @@
             <div class="field">
                 <label>委託部門</label>
                 <div class="ui selection dropdown clearRD">
-                    <input type="hidden" name="gender">
+                    <input type="hidden" name="RD">
                     <i class="dropdown icon"></i>
                     <div class="default text">請先選擇廠別</div>
                     <div class="menu">
@@ -253,7 +240,7 @@
             </div>
             <div class="field">
                 <label>希望完成日</label>
-                <input placeholder="Last Name" type="date">
+                <input placeholder="Last Name" type="date" name="except_date">
             </div>
         </div>
         <div class="four fields">
@@ -267,12 +254,12 @@
             </div>
             <div class="field sample">
                 <label>樣品數量</label>
-                <input placeholder="無請輸入0" type="number" min="0">
+                <input placeholder="無請輸入0" type="number" min="0" name="sampleQ">
             </div>
             <div class="field">
                 <label>單位</label>
                 <div class="ui selection dropdown">
-                    <input type="hidden" name="level">
+                    <input type="hidden" name="UOM">
                     <i class="dropdown icon"></i>
                     <div class="default text">請先輸入數量</div>
                     <div class="menu">
@@ -282,7 +269,7 @@
                 </div>
             </div>
         </div>
-        <div class="ui blue submit button">Submit</div>
+        <div class="ui blue submit button" id='retrieve'>Submit</div>
     </form>
 
     </div>
@@ -415,6 +402,7 @@
 
 <script>
 
+    //研發申請的應用類別
 let ap = [
 	{"name":"塗料",
 	"item1":["色度","外觀","固成分(%)","NCO(%)","粘度(cps/25℃)","1:黃變/2:不黃變","其它"],
@@ -473,12 +461,14 @@ let ap = [
 	}
 	]
 
+    //回傳的檔案名稱 & 應加入連結檔案位置
 let uploadfile_A =[
 	{"name":"A檔案"},
 	{"name":"B檔案"},
 	{"name":"C檔案"}
 ];
     
+    //討論區資料庫內容
 let reply_data ={
     "RDNO":{
         "ARD20180303": {"name":'Matt', "comments":'Great', "replydate":'2018/03/05'},
@@ -489,6 +479,7 @@ let reply_data ={
     }
 }
 
+    //顯示討論區資料內容
 function show_reply(){
     let result = '<div class="ui comments"><h3 class="ui dividing center aligned header">討論區</h3>';
     for (var make in reply_data.RDNO){
@@ -496,14 +487,15 @@ function show_reply(){
         let comments = reply_data.RDNO[make].comments;
         let replydate = reply_data.RDNO[make].replydate;
         let eachcomment = '<div class="comment"><div class="content"><a class="author">' + name + '</a><div class="metadata"><span class="date">' + replydate + '</span></div><div class="text">' + comments + '</div></div></div>'
-        
+
         result += eachcomment
-        
+
     };
     result += '<form class="ui mini reply form"><div class="field"><textarea></textarea></div><div class="ui blue labeled submit icon button" id="addreply"><i class="icon edit"></i> Add Reply</div></form></div>'
     return result;
 };
 
+    //顯示資料庫的附件列表
 function show_file(upload_file) {
 	let result = '';
 	upload_file.forEach(function(element){
@@ -514,6 +506,7 @@ function show_file(upload_file) {
 	return result;
 }
 
+    //自動帶入modal呼叫格式
 function show_modal(modalform){
 	let result = '';
 	modalform.forEach(function(element){
@@ -522,7 +515,7 @@ function show_modal(modalform){
 	});
 	return result;
 };
-    
+
   $(document).ready(function() {
       // fix main menu to page on passing
       $('.main.menu').visibility({
@@ -555,14 +548,23 @@ function show_modal(modalform){
           var mm = today.getMonth()+1; //January is 0!
           var yyyy = today.getFullYear()
           today = yyyy + '/' + mm + '/' + dd
-          $(this).parents('form').before('<div class="comment"><div class="content"><a class="author">' + 'King' + '</a><div class="metadata"><span class="date">' + today + '</span></div><div class="text">' + replytext + '</div></div></div>')
-          $(this).siblings().find('textarea').val('')
-//          alert(replytext)
-//          let dataNo = 'ARD20180303'
-//          let finddata = reply_data.find(item => item.RDNO === dataNo)
-//          if (dataNo !== ''){
-//              $('#callreply').html(show_reply());
-//          };
+          
+          if (replytext !== '') {
+              $(this).parents('form').before('<div class="comment"><div class="content"><a class="author">' + 'King' + '</a><div class="metadata"><span class="date">' + today + '</span></div><div class="text">' + replytext + '</div></div></div>')
+              $(this).siblings().find('textarea').val('')
+              alert(replytext)              
+          }
+          else {
+              $.uiAlert({
+                  textHead: 'Error message', // header
+                  text: '請先輸入訊息', // Text
+                  bgcolor: 'rgba(242, 28, 28, 0.95)', // background-color
+                  textcolor: '#fff', // color
+                  position: 'top-center',// position . top And bottom ||  left / center / right
+                  icon: 'warning sign', // icon in semantic-UI
+                  time: 3, // time
+			});
+          }
       });
       
     });
@@ -757,6 +759,28 @@ function show_modal(modalform){
 		  $childCheckbox.checkbox('uncheck');
 	  }
   });
+    
+//    $('.ui.form .submit.button').api({
+//        url: 'server.py',
+//        method : 'get',
+//        serializeForm: true,
+//        beforeSend: function(settings) {
+//        },
+//        onSuccess: function(data) {
+//        }
+//    });
+//    
+    
+    $('#retrieve').on( "click", function(){
+        let applydata = $('.form.attached').serializeArray()
+        console.log(applydata)
+    });
+    
+//    $('form.attached').submit(function(event) {
+//        console.log($(this).serializeArray());
+//        event.preventDefault();
+//    });
+    
     
 </script>
 
